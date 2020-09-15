@@ -19,15 +19,24 @@ public class TicTacToe extends JFrame {
         Container window = frame.getContentPane();
         window.setLayout(new GridLayout(3, 3));
 
-        Panel l1 = new Panel();
-        Panel m1 = new Panel();
-        Panel r1 = new Panel();
-        Panel l2 = new Panel();
-        Panel m2 = new Panel();
-        Panel r2 = new Panel();
-        Panel l3 = new Panel();
-        Panel m3 = new Panel();
-        Panel r3 = new Panel();
+        JPanel l1 = new JPanel();
+        l1.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel m1 = new JPanel();
+        m1.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel r1 = new JPanel();
+        r1.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel l2 = new JPanel();
+        l2.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel m2 = new JPanel();
+        m2.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel r2 = new JPanel();
+        r2.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel l3 = new JPanel();
+        l3.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel m3 = new JPanel();
+        m3.setBorder(BorderFactory.createLineBorder(Color.black));
+        JPanel r3 = new JPanel();
+        r3.setBorder(BorderFactory.createLineBorder(Color.black));
 
         window.add(l1);
         window.add(m1);
@@ -97,6 +106,33 @@ public class TicTacToe extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 System.out.println("rechts");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        l2.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("l2");
             }
 
             @Override
