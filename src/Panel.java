@@ -4,7 +4,7 @@ import java.awt.*;
 public class Panel extends JPanel {
     public final Object Panel;
     static {
-        new JPanel().setBorder(BorderFactory.createLineBorder(Color.black));
+        new Panel().setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     public Panel() {
