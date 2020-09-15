@@ -2,18 +2,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class TicTacToe extends JFrame {
 
+    public ArrayList<String> values = new ArrayList<>();
+
     public static void main(String[] args) {
-        gui();
+        new TicTacToe().initial();
+        new TicTacToe().gui();
     }
 
-    public static void gui() {
+    private int ronde = 1;
+
+    public void initial(){
+        values.clear();
+        for (int i = 0; i < 9; i++){
+            values.add("-");
+        }
+        System.out.println(values.size());
+    }
+
+    public void gui() {
+        System.out.println(values);
         TicTacToe frame = new TicTacToe();
-        frame.setSize(600, 600);
+        frame.setSize(300, 337);
         frame.setTitle("Tic Tac Toe");
-        frame.setResizable(false);
+        //frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         Container window = frame.getContentPane();
@@ -48,91 +63,39 @@ public class TicTacToe extends JFrame {
         window.add(m3);
         window.add(r3);
 
-        l1.addMouseListener(new MouseListener() {
+        window.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("lafds");
-            }
+                int width = window.getWidth();
+                int height = window.getHeight();
+                int xLoc = e.getX();
+                int yloc = e.getY();
 
-            @Override
-            public void mousePressed(MouseEvent e) {
+                if (xLoc < (width / 3) && yloc < (height / 3)){
+                    System.out.println("l1");
+                    if (ronde%2 == 1){
+                        System.out.println("player 1");
 
-            }
+                    } else{
+                        System.out.println("player 2");
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-
-        m1.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("31");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-
-        r1.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("rechts");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-
-        l2.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("l2");
+                    }
+                } else if (xLoc < (width / 3) * 2 && yloc < (height / 3)){
+                    System.out.println("m1");
+                    if (ronde%2 == 1){
+                        System.out.println("player 1");
+                    } else{
+                        System.out.println("player 2");
+                    }
+                } else if (xLoc < (width / 3) * 3 && yloc < (height / 3)){
+                    System.out.println("r1");
+                    if (ronde%2 == 1){
+                        System.out.println("player 1");
+                    } else{
+                        System.out.println("player 2");
+                    }
+                }
+                ronde++;
             }
 
             @Override
@@ -157,19 +120,6 @@ public class TicTacToe extends JFrame {
         });
 
         frame.setVisible(true);
-
-
-    }
-
-    public static void logic(){
-
-    }
-
-    public void nought(){
-
-    }
-
-    public void cross(){
 
     }
 }
