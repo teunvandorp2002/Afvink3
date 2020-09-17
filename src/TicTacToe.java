@@ -2,29 +2,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TicTacToe extends JFrame {
-
-    public ArrayList<String> values = new ArrayList<>();
-
     public static void main(String[] args) {
         new TicTacToe().initial();
         new TicTacToe().gui();
     }
 
-    private int ronde = 1;
+    public static ArrayList<String> values = new ArrayList<>();
+    private int turn = 1;
+    private int player1 = 0;
+    private int player2 = 0;
 
     public void initial(){
-        values.clear();
         for (int i = 0; i < 9; i++){
             values.add("-");
         }
-        System.out.println(values.size());
     }
 
     public void gui() {
-        System.out.println(values);
         TicTacToe frame = new TicTacToe();
         frame.setSize(300, 337);
         frame.setTitle("Tic Tac Toe");
@@ -63,6 +62,8 @@ public class TicTacToe extends JFrame {
         window.add(m3);
         window.add(r3);
 
+        ArrayList<JPanel> squares = new ArrayList<>(Arrays.asList(l1, m1, r1, l2, m2, r2, l3, m3, r3));
+
         window.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -72,30 +73,135 @@ public class TicTacToe extends JFrame {
                 int yloc = e.getY();
 
                 if (xLoc < (width / 3) && yloc < (height / 3)){
-                    System.out.println("l1");
-                    if (ronde%2 == 1){
-                        System.out.println("player 1");
-
+                    if (turn %2 == 1){
+                        if (values.get(0).equals("-")) {
+                            circle(l1.getGraphics(), l1.getWidth(), l1.getHeight(), 0);
+                        }
                     } else{
-                        System.out.println("player 2");
-
-                    }
-                } else if (xLoc < (width / 3) * 2 && yloc < (height / 3)){
-                    System.out.println("m1");
-                    if (ronde%2 == 1){
-                        System.out.println("player 1");
-                    } else{
-                        System.out.println("player 2");
-                    }
-                } else if (xLoc < (width / 3) * 3 && yloc < (height / 3)){
-                    System.out.println("r1");
-                    if (ronde%2 == 1){
-                        System.out.println("player 1");
-                    } else{
-                        System.out.println("player 2");
+                        if (values.get(0).equals("-")) {
+                            cross(l1.getGraphics(), l1.getWidth(), l1.getHeight(), 0);
+                        }
                     }
                 }
-                ronde++;
+
+                else if (xLoc < (width / 3) * 2 && yloc < (height / 3)){
+                    if (turn %2 == 1){
+                        if (values.get(1).equals("-")) {
+                            circle(m1.getGraphics(), m1.getWidth(), m1.getHeight(), 1);
+                        }
+                    } else{
+                        if (values.get(1).equals("-")) {
+                            cross(m1.getGraphics(), m1.getWidth(), m1.getHeight(), 1);
+                        }
+                    }
+                }
+
+                else if (xLoc < (width / 3) * 3 && yloc < (height / 3)){
+                    if (turn %2 == 1){
+                        if (values.get(2).equals("-")) {
+                            circle(r1.getGraphics(), r1.getWidth(), r1.getHeight(), 2);
+                        }
+                    } else{
+                        if (values.get(2).equals("-")) {
+                            cross(r1.getGraphics(), r1.getWidth(), r1.getHeight(), 2);
+                        }
+                    }
+                }
+
+                else if (xLoc < (width / 3) && yloc < (height / 3) * 2){
+                    if (turn %2 == 1){
+                        if (values.get(3).equals("-")) {
+                            circle(l2.getGraphics(), l2.getWidth(), l2.getHeight(), 3);
+                        }
+                    } else{
+                        if (values.get(3).equals("-")) {
+                            cross(l2.getGraphics(), l2.getWidth(), l2.getHeight(), 3);
+                        }
+                    }
+                }
+
+                else if (xLoc < (width / 3) * 2 && yloc < (height / 3) * 2){
+                    if (turn %2 == 1){
+                        if (values.get(4).equals("-")) {
+                            circle(m2.getGraphics(), m2.getWidth(), m2.getHeight(), 4);
+                        }
+                    } else{
+                        if (values.get(4).equals("-")) {
+                            cross(m2.getGraphics(), m2.getWidth(), m2.getHeight(), 4);
+                        }
+                    }
+                }
+
+                else if (xLoc < (width / 3) * 3 && yloc < (height / 3) * 2){
+                    if (turn %2 == 1){
+                        if (values.get(5).equals("-")) {
+                            circle(r2.getGraphics(), r2.getWidth(), r2.getHeight(), 5);
+                        }
+                    } else{
+                        if (values.get(5).equals("-")) {
+                            cross(r2.getGraphics(), r2.getWidth(), r2.getHeight(), 5);
+                        }
+                    }
+                }
+
+                else if (xLoc < (width / 3) && yloc < (height / 3) * 3){
+                    if (turn %2 == 1){
+                        if (values.get(6).equals("-")) {
+                            circle(l3.getGraphics(), l3.getWidth(), l3.getHeight(), 6);
+                        }
+                    } else{
+                        if (values.get(6).equals("-")) {
+                            cross(l3.getGraphics(), l3.getWidth(), l3.getHeight(), 6);
+                        }
+                    }
+                }
+
+                else if (xLoc < (width / 3) * 2 && yloc < (height / 3) * 3){
+                    if (turn %2 == 1){
+                        if (values.get(7).equals("-")) {
+                            circle(m3.getGraphics(), m3.getWidth(), m3.getHeight(), 7);
+                        }
+                    } else{
+                        if (values.get(7).equals("-")) {
+                            cross(m3.getGraphics(), m3.getWidth(), m3.getHeight(), 7);
+                        }
+                    }
+                }
+
+                else if (xLoc < (width / 3) * 3 && yloc < (height / 3) * 3){
+                    if (turn %2 == 1){
+                        if (values.get(8).equals("-")) {
+                            circle(r3.getGraphics(), r3.getWidth(), r3.getHeight(), 8);
+                        }
+                    } else{
+                        if (values.get(5).equals("-")) {
+                            cross(r3.getGraphics(), r3.getWidth(), r3.getHeight(), 8);
+                        }
+                    }
+                }
+
+                if (checkWon(frame)){
+                    int reply = JOptionPane.showConfirmDialog(frame, "Do you want to play again?",
+                            "Continue?", JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        frame.setVisible(false);
+                        for (JPanel square : squares) {
+                            clearField(square.getGraphics(), square.getWidth(), square.getHeight());
+                        }
+                        for (int i = 0; i < 9; i++){
+                            values.set(i, "-");
+                        }
+                        frame.setVisible(true);
+
+                    } else {
+                        System.out.println(player1);
+                        System.out.println(player2);
+                        JOptionPane.showMessageDialog(frame, "Player 1: " + player1 + "\nPlayer 2: " + player2,
+                                "Score", JOptionPane.INFORMATION_MESSAGE);
+                        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                    }
+                }
+
             }
 
             @Override
@@ -121,5 +227,58 @@ public class TicTacToe extends JFrame {
 
         frame.setVisible(true);
 
+    }
+
+    private void circle(Graphics g, int width, int height, int position){
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setColor(Color.blue);
+        g2D.setStroke(new BasicStroke(10F));
+        g2D.drawOval(5, 5, width - 10, height - 10);
+        values.set(position, "O");
+        turn++;
+    }
+
+    private void cross(Graphics g, int width, int height, int position){
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setColor(Color.red);
+        g2D.setStroke(new BasicStroke(10F));
+        g2D.drawLine(0, 0, width, height);
+        g2D.drawLine(width, 0, 0, height);
+        values.set(position, "X");
+        turn++;
+    }
+
+    private boolean checkWon(TicTacToe frame){
+        if (values.get(0).equals("O") && values.get(1).equals("O") && values.get(2).equals("O") ||
+            values.get(3).equals("O") && values.get(4).equals("O") && values.get(5).equals("O") ||
+            values.get(6).equals("O") && values.get(7).equals("O") && values.get(8).equals("O") ||
+            values.get(0).equals("O") && values.get(3).equals("O") && values.get(6).equals("O") ||
+            values.get(1).equals("O") && values.get(4).equals("O") && values.get(7).equals("O") ||
+            values.get(2).equals("O") && values.get(5).equals("O") && values.get(8).equals("O") ||
+            values.get(0).equals("O") && values.get(4).equals("O") && values.get(8).equals("O") ||
+            values.get(2).equals("O") && values.get(4).equals("O") && values.get(6).equals("O")) {
+            JOptionPane.showMessageDialog(frame, "Player 1 Wins!!!", "Winner!", JOptionPane.INFORMATION_MESSAGE);
+            player1 ++;
+            return true;
+        } else if (values.get(0).equals("X") && values.get(1).equals("X") && values.get(2).equals("X") ||
+                   values.get(3).equals("X") && values.get(4).equals("X") && values.get(5).equals("X") ||
+                   values.get(6).equals("X") && values.get(7).equals("X") && values.get(8).equals("X") ||
+                   values.get(0).equals("X") && values.get(3).equals("X") && values.get(6).equals("X") ||
+                   values.get(1).equals("X") && values.get(4).equals("X") && values.get(7).equals("X") ||
+                   values.get(2).equals("X") && values.get(5).equals("X") && values.get(8).equals("X") ||
+                   values.get(0).equals("X") && values.get(4).equals("X") && values.get(8).equals("X") ||
+                   values.get(2).equals("X") && values.get(4).equals("X") && values.get(6).equals("X")){
+            JOptionPane.showMessageDialog(frame, "Player 2 Wins!!!", "Winner!", JOptionPane.INFORMATION_MESSAGE);
+            player2 ++;
+            return true;
+        } else if (!values.contains("-")) {
+            JOptionPane.showMessageDialog(frame, "Oops, it's a draw...", "Draw", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        }
+        return false;
+    }
+
+    public void clearField(Graphics g, int width, int height){
+        g.clearRect(0, 0, width, height);
     }
 }
