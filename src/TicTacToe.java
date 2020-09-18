@@ -27,7 +27,6 @@ public class TicTacToe extends JFrame {
         TicTacToe frame = new TicTacToe();
         frame.setSize(300, 337);
         frame.setTitle("Tic Tac Toe");
-        //frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         Container window = frame.getContentPane();
@@ -194,8 +193,6 @@ public class TicTacToe extends JFrame {
                         frame.setVisible(true);
 
                     } else {
-                        System.out.println(player1);
-                        System.out.println(player2);
                         JOptionPane.showMessageDialog(frame, "Player 1: " + player1 + "\nPlayer 2: " + player2,
                                 "Score", JOptionPane.INFORMATION_MESSAGE);
                         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
