@@ -173,7 +173,7 @@ public class TicTacToe extends JFrame {
                             circle(r3.getGraphics(), r3.getWidth(), r3.getHeight(), 8);
                         }
                     } else{
-                        if (values.get(5).equals("-")) {
+                        if (values.get(8).equals("-")) {
                             cross(r3.getGraphics(), r3.getWidth(), r3.getHeight(), 8);
                         }
                     }
