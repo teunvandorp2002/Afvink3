@@ -1,2 +1,2 @@
 # Afvink3
-Known bugs: Het vakje rechtsonder reageert soms niet op input
+hardcoded behalve de grootte van de vakjes
