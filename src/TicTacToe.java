@@ -12,17 +12,26 @@ public class TicTacToe extends JFrame {
         new TicTacToe().gui();
     }
 
-    public static ArrayList<String> values = new ArrayList<>();
-    private int turn = 1;
-    private int player1 = 0;
-    private int player2 = 0;
+    /*
+    Some public variables for keeping track of the course of the game
+     */
+    public static ArrayList<String> values = new ArrayList<>(); //ArrayList to know which squares are filled by each shape
+    private int turn = 1; //makes it possible to alternate the turns
+    private int player1 = 0; //the score of player 1
+    private int player2 = 0; //the score of player 2
 
+    /**
+     * Fills the ArrayList values with fillers
+     */
     public void initial(){
         for (int i = 0; i < 9; i++){
             values.add("-");
         }
     }
 
+    /**
+     * The gui and the main logic of the game.
+     */
     public void gui() {
         TicTacToe frame = new TicTacToe();
         frame.setSize(300, 337);
@@ -241,6 +250,13 @@ public class TicTacToe extends JFrame {
 
     }
 
+    /**
+     * Function to draw a circle in one of the shapes
+     * @param g The graphics of the square where the circle gets drawn
+     * @param width The width of the square where the circle gets drawn
+     * @param height The height of the square where the circle gets drawn
+     * @param position The number of the square where the circle gets drawn
+     */
     private void circle(Graphics g, int width, int height, int position){
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.blue);
@@ -250,6 +266,13 @@ public class TicTacToe extends JFrame {
         turn++;
     }
 
+    /**
+     * Function to draw a cross in one of the shapes
+     * @param g The graphics of the square where the cross gets drawn
+     * @param width The width of the square where the cross gets drawn
+     * @param height The height of the square where the cross gets drawn
+     * @param position The number of the square where the cross gets drawn
+     */
     private void cross(Graphics g, int width, int height, int position){
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.red);
@@ -260,6 +283,12 @@ public class TicTacToe extends JFrame {
         turn++;
     }
 
+
+    /**
+     * The logic to check who's the winner of the game
+     * @param frame The gui created in the function gui(), used as parent component for the MessageDialog.
+     * @return A boolean. True if the game has come to an end, false if there are ampty square and no one has won.
+     */
     private boolean checkWon(TicTacToe frame){
         if (values.get(0).equals("O") && values.get(1).equals("O") && values.get(2).equals("O") ||
             values.get(3).equals("O") && values.get(4).equals("O") && values.get(5).equals("O") ||
@@ -290,6 +319,12 @@ public class TicTacToe extends JFrame {
         return false;
     }
 
+    /**
+     * Clears the playing field
+     * @param g The graphics of the square that needs to be emptied
+     * @param width The width of the square that needs to be emptied
+     * @param height The height of the square that needs to be emptied
+     */
     public void clearField(Graphics g, int width, int height){
         g.clearRect(0, 0, width, height);
     }
