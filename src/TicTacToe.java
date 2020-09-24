@@ -191,6 +191,13 @@ public class TicTacToe extends JFrame {
                             values.set(i, "-");
                         }
                         frame.setVisible(true);
+                        if (turn %2 ==1){
+                            JOptionPane.showMessageDialog(frame, "First up: circle (Player 1)",
+                                    "Score", JOptionPane.INFORMATION_MESSAGE);
+                        }else{
+                            JOptionPane.showMessageDialog(frame, "First up: cross (Player 2)",
+                                    "Score", JOptionPane.INFORMATION_MESSAGE);
+                        }
 
                     } else {
                         JOptionPane.showMessageDialog(frame, "Player 1: " + player1 + "\nPlayer 2: " + player2,
@@ -223,6 +230,14 @@ public class TicTacToe extends JFrame {
         });
 
         frame.setVisible(true);
+
+        if (turn %2 ==1){
+            JOptionPane.showMessageDialog(frame, "First up: circle (Player 1)",
+                    "Score", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(frame, "First up: cross (Player 2)",
+                    "Score", JOptionPane.INFORMATION_MESSAGE);
+        }
 
     }
 
